@@ -1,3 +1,8 @@
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+#include "vec3.h"
+
 #define printSizeof(a, type) ({ \
     printf("The number of bytes in a %s is %zu.\n", a, sizeof(type)); \
 })
@@ -7,6 +12,10 @@ void ej2();
 void ej3();
 void ej4();
 void ej5();
+void ej6(const char * path);
+void ej7();
+void ej8();
+void ej10();
 
 /*
 
@@ -122,3 +131,94 @@ void ej5(){
     free (arreglo);
 
 }
+
+/*
+ * Desarrollar el mismo programa del problema anterior, esta vez imprimiendo los números generados en un
+ * archivo utilizando el siguiente formato: [n0, n1, ..., nn],
+ * donde ni es el número almacenado en la posición i del array.
+ */
+void ej6(const char * path){
+    FILE *f = fopen("ej6pr0.txt", "w");
+    if (f == NULL)
+    {
+        printf("Error opening file!\n");
+        exit(1);
+    }
+
+    /* print some text */
+    const char *text = "Write this to the file";
+    fprintf(f, "Some text: %s\n", text);
+
+    /* print integers and floats */
+    int j = 1;
+    float py = 3.1415927;
+    fprintf(f, "Integer: %d, float: %f\n", j, py);
+
+
+    int numeroElementos,i;
+    double *arreglo;
+
+    printf ("¿Cuántos elementos quieres? ");
+    scanf ("%d", &numeroElementos);
+
+    arreglo = (double*)malloc(numeroElementos*sizeof(double));
+
+    if (arreglo==NULL)
+    {
+        perror("Problemas reservando memoria");
+        exit (1);
+    }
+
+    srand(time(NULL));
+    for(i=0; i <numeroElementos; i++){
+        arreglo[i] = (double)rand() / (double)RAND_MAX ;
+    }
+    fprintf(f, "[");
+    for(i=0; i <numeroElementos; i++){
+        fprintf(f, "%f,", arreglo[i]);
+    }
+    fprintf(f, "]");
+
+    free (arreglo);
+    fclose(f);
+    printf("Archivo guardado en: %s", path);
+}
+
+void ej7(){
+    Vec3 a;
+    Vec3 b;
+    vec3Init(&a, 1.0f, 2.0f, 3.0f);
+    vec3Init(&b, 3.0f, 2.0f, 1.0f);
+    printf("<a,b> = %.2f\n", add(&a, &b));
+
+}
+
+void ej8(){
+    Vec3 a;
+    Vec3 b;
+    vec3Init(&a, 1.0f, 2.0f, 3.0f);
+    vec3Init(&b, 3.0f, 2.0f, 1.0f);
+    Vec3 c = addp(&a, &b);
+    toString(&a);
+    toString(&b);
+    toString(&c);
+}
+
+
+/**
+ * Desarrollar un programa C que crea un array de 100 “Vec3” donde los 3 componentes (x, y, z)
+ * de cada elemento son un número aleatorio en el intervalo [0, 1].
+ */
+void ej10(){
+    int i=0, cant=100;
+    Vec3 pVec3[100];
+
+    for(i; i <cant; i++){
+        pVec3[i] = vec3InitRandom();
+        toString(&pVec3[i]);
+    }
+}
+
+
+
+
