@@ -6,3 +6,5 @@
 
 
 CompGrafica.iml
+*.out
+*.o
