@@ -8,6 +8,8 @@ typedef struct
 
 Vec3 vec3InitRandom();
 
+Vec3 vec3InitHomotecia(int a, int b);
+
 Vec3 vec3Contructor( float x, float y, float z);
 
 Vec3 addp(Vec3 *a, Vec3 *b);

@@ -16,6 +16,7 @@ void ej6(const char * path);
 void ej7();
 void ej8();
 void ej10();
+void ej11();
 void ej12(int filas, int columnas);
 
 /*
@@ -220,8 +221,42 @@ void ej10(){
     }
 }
 
+/*
+11. Desarrollar el mismo programa del problema anterior, recibiendo la cantidad de elementos y el
+        intervalo de generación de números aleatorios como entrada del usuario. Sugerencia: pensar en
+        términos de una homotecia del intervalo [0, 1] a [a, b].
+*/
+void ej11() {
 
-// TODO Mergear EJ11 maquina de casa
+    int cant,i,a,b;
+    Vec3 *pVec3;
+
+    printf ("¿Cuántos elementos quieres? ");
+    scanf ("%d", &cant);
+    printf ("¿Defina (a) para intervalo [a,b]? ");
+    scanf ("%d", &a);
+    printf ("¿Defina (b) para intervalo [a,b]? ");
+    scanf ("%d", &b);
+
+    printf("The number of bytes in a Vec3 is %zu.\n", sizeof(Vec3));
+    pVec3 = (Vec3*)malloc(cant*sizeof(Vec3));
+
+    if (pVec3==NULL)
+    {
+        perror("Problemas reservando memoria");
+        exit (1);
+    }
+
+    for(i=0; i <cant; i++){
+      pVec3[i] = vec3InitHomotecia(a,b);
+      toString(&pVec3[i]);
+    }
+
+    free (pVec3);
+
+}
+
+
 
 /*
  * 12. Desarrollar el mismo programa del problema anterior, organizando los elementos en una estrucura
