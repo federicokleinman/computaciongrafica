@@ -1,49 +1,48 @@
 ### Computación Gráfica
 Práctico 0
-1 Problemas
 
-1. Desarrollar un programa C que imprime en la Terminal el largo en bytes de los siguientes tipos de
+## 1. Desarrollar un programa C que imprime en la Terminal el largo en bytes de los siguientes tipos de
 datos: char, int, long, long long, float, double, long double, char*, int*, float*, void*. Sugerencia:
 utilizar el operador sizeof.
 
-2. Desarrollar un programa C que crea un array de 100 elementos, almacena en cada posición su
+## 2. Desarrollar un programa C que crea un array de 100 elementos, almacena en cada posición su
 ´ındice correspondiente y lo imprime en la Terminal.
 
-3. Desarrollar un programa C que crea un array de 100 elementos, lo llena con números aleatorios
+## 3. Desarrollar un programa C que crea un array de 100 elementos, lo llena con números aleatorios
 y lo imprime en la Terminal.
 
-4. Desarrollar un programa C que crea un array de 100 elementos, lo llena con números aleatorios
+## 4. Desarrollar un programa C que crea un array de 100 elementos, lo llena con números aleatorios
 en el intervalo [0, 1] y lo imprime en la Terminal.
 
-5. Desarrollar el mismo programa del problema anterior, recibiendo la cantidad de elementos como
+## 5. Desarrollar el mismo programa del problema anterior, recibiendo la cantidad de elementos como
 entrada del usuario.
 
-6. Desarrollar el mismo programa del problema anterior, esta vez imprimiendo los números generados
+## 6. Desarrollar el mismo programa del problema anterior, esta vez imprimiendo los números generados
 en un archivo utilizando el siguiente formato: [n0, n1, ..., nn], donde ni es el número
 almacenado en la posición i del array.
 
-7. Desarrollar un nuevo tipo de dato “Vec3” como una estructura (struct) e implementar una
+## 7. Desarrollar un nuevo tipo de dato “Vec3” como una estructura (struct) e implementar una
 función add que recibe dos variables de tipo “Vec3” y devuelve su suma.
 
-8. Desarrollar un nuevo tipo de dato “Vec3” como una estructura (struct) e implementar una
+## 8. Desarrollar un nuevo tipo de dato “Vec3” como una estructura (struct) e implementar una
 función addp que recibe tres punteros variables de tipo “Vec3” y devuelve la suma de los primeros
 dos elementos almacenado en el tercero.
 
-9. Mover la declaración del tipo de dato “Vec3” y las funciones add y addp a su propio archivo y
+## 9. Mover la declaración del tipo de dato “Vec3” y las funciones add y addp a su propio archivo y
 referenciarlo desde main.
 
-10. Desarrollar un programa C que crea un array de 100 “Vec3” donde los 3 componentes (x, y, z)
+## 10. Desarrollar un programa C que crea un array de 100 “Vec3” donde los 3 componentes (x, y, z)
 de cada elemento son un número aleatorio en el intervalo [0, 1].
 
-11. Desarrollar el mismo programa del problema anterior, recibiendo la cantidad de elementos y el
+## 11. Desarrollar el mismo programa del problema anterior, recibiendo la cantidad de elementos y el
 intervalo de generación de números aleatorios como entrada del usuario. Sugerencia: pensar en
 términos de una homotecia del intervalo [0, 1] a [a, b].
 
-12. Desarrollar el mismo programa del problema anterior, organizando los elementos en una estrucura
+## 12. Desarrollar el mismo programa del problema anterior, organizando los elementos en una estrucura
 lógica bidimensional (una “matriz de Vec3”). El usuario proporcionará las dimensiones de
 la misma como entrada.
 
-13. Implementar la lógica necesaria para representar una Matriz de NXM floats con la siguiente
+## 13. Implementar la lógica necesaria para representar una Matriz de NXM floats con la siguiente
 interfaz y funciones:
 (a) Matrix* matrix new(int n, int m) - Crea una matriz de dimensiones NXM
 (b) Matrix* matrix identity(int n, int m) - Crea una matriz de dimensiones NXM inicializada en la Identidad.
@@ -53,7 +52,7 @@ interfaz y funciones:
 (e) void matrix mult(Matrix* a, Matrix* b, Matrix* c) - Asigna c = aXb.
 (f) void matrix free(Matrix* m) - Elimina una matriz, liberando sus recursos.
 
-14. Dada la siguiente estructura que declara un Stack Frame, implementar un TDA Pila con al menos las operaciones propuestas a continuación.
+## 14. Dada la siguiente estructura que declara un Stack Frame, implementar un TDA Pila con al menos las operaciones propuestas a continuación.
 struct StackFrameStruct
 {
 void* data;
@@ -68,7 +67,7 @@ Operaciones:
 (e) void stack free(Stack* s) - Elimina la pila, liberando todos sus recursos excepto los datos almacenados.
 Desarrollar un programa que instancia una pila, almacena distintos tipos de datos y luego libera sus recursos.
 
-15. Dada la siguiente estructura que declara un “Bloque”, implementar un TDA Lista Encadenada
+## 15. Dada la siguiente estructura que declara un “Bloque”, implementar un TDA Lista Encadenada
 con al menos las operaciones propuestas a continuación.
 struct BlockStruct
 {
@@ -93,7 +92,7 @@ el largo de la lista.
 Desarrollar un programa que instancia una lista, almacena distintos tipos de datos y luego libera
 sus recursos.
 
-16. Dada la siguiente estructura que declara un vector y lo asocia con su tamaño, implementar un
+## 16. Dada la siguiente estructura que declara un vector y lo asocia con su tamaño, implementar un
 tipo de dato “Vector redimensionable” de memoria consecutiva que tiene una capacidad inicial
 variable y se redimensiona automaticamente conforme se agregan nuevos elementos a él.
 struct VectorStruct
