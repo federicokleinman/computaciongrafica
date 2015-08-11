@@ -29,17 +29,24 @@ int main(int argc, const char* argv[]) {
             case 3 : ej3(); break;
             case 4 : ej4(); break;
             case 5 : ej5(); break;
-            case 6 : ej6( argv[0]); break;
+
+            case 6 :
+                // usa el la ruta del programa para ir a buscar el archivo
+                ej6( argv[0]); break;
             case 7 : ej7(); break;
             case 8 : ej8(); break;
 //            case '9' :
             case 10 :  ej10(); break;
-            case 11 :  ej11(); break;
-                
-//TODO falta mergeo con el ejercio 11 de casa
+
+            case 11 :
+                // llamada: numEj CantElementos IntA IntB
+                assert(argc==5);
+                ej11(atoi(argv[2]),atoi(argv[3]), atoi(argv[4]));
+                break;
             case 12 :
-                assert(argc==4);
-                ej12(atoi(argv[2]),atoi(argv[3]));
+                // llamada: numEj Dimx DimY IntA IntB
+                assert(argc==6);
+                ej12(atoi(argv[2]),atoi(argv[3]), atoi(argv[4]),atoi(argv[5]));
                 break;
 
             default :

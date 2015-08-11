@@ -16,8 +16,8 @@ void ej6(const char * path);
 void ej7();
 void ej8();
 void ej10();
-void ej11();
-void ej12(int filas, int columnas);
+void ej11(int cant, int a, int b);
+void ej12(int filas, int columnas, int a, int b);
 
 /*
 
@@ -226,17 +226,10 @@ void ej10(){
         intervalo de generación de números aleatorios como entrada del usuario. Sugerencia: pensar en
         términos de una homotecia del intervalo [0, 1] a [a, b].
 */
-void ej11() {
+void ej11(int cant, int a, int b) {
 
-    int cant,i,a,b;
+    int i;
     Vec3 *pVec3;
-
-    printf ("¿Cuántos elementos quieres? ");
-    scanf ("%d", &cant);
-    printf ("¿Defina (a) para intervalo [a,b]? ");
-    scanf ("%d", &a);
-    printf ("¿Defina (b) para intervalo [a,b]? ");
-    scanf ("%d", &b);
 
     printf("The number of bytes in a Vec3 is %zu.\n", sizeof(Vec3));
     pVec3 = (Vec3*)malloc(cant*sizeof(Vec3));
@@ -263,7 +256,7 @@ void ej11() {
  * lógica bidimensional (una “matriz de Vec3”). El usuario proporcionará las dimensiones de
  * la misma como entrada.
  */
-void ej12(int filas, int columnas){
+void ej12(int filas, int columnas, int a, int b){
 
     printf("Ej 12: Areglo Bidimensional [%d] [%d]", filas, columnas);
 
@@ -283,7 +276,7 @@ void ej12(int filas, int columnas){
     // Crea vec3 para cada posicion
     for (i=0;i<filas;i++)
         for (j=0;j<columnas;j++)
-            array[i][j] = vec3InitRandom(); //TODO Cambiar esta funcion InitRandom del ej11
+            array[i][j] = vec3InitHomotecia(a,b); //TODO Cambiar esta funcion InitRandom del ej11
 
     // Dibujamos la Matriz en pantalla
     for (i=0; i<filas; i++)
