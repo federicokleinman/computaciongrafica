@@ -31,14 +31,18 @@ dos elementos almacenado en el tercero.
 
 9. Mover la declaración del tipo de dato “Vec3” y las funciones add y addp a su propio archivo y
 referenciarlo desde main.
+
 10. Desarrollar un programa C que crea un array de 100 “Vec3” donde los 3 componentes (x, y, z)
 de cada elemento son un número aleatorio en el intervalo [0, 1].
+
 11. Desarrollar el mismo programa del problema anterior, recibiendo la cantidad de elementos y el
 intervalo de generación de números aleatorios como entrada del usuario. Sugerencia: pensar en
 términos de una homotecia del intervalo [0, 1] a [a, b].
+
 12. Desarrollar el mismo programa del problema anterior, organizando los elementos en una estrucura
 lógica bidimensional (una “matriz de Vec3”). El usuario proporcionará las dimensiones de
 la misma como entrada.
+
 13. Implementar la lógica necesaria para representar una Matriz de NXM floats con la siguiente
 interfaz y funciones:
 (a) Matrix* matrix new(int n, int m) - Crea una matriz de dimensiones NXM
@@ -51,6 +55,7 @@ si y solo si r y c son indices válidos dentro de m.
 y c son indices válidos dentro de m.
 (e) void matrix mult(Matrix* a, Matrix* b, Matrix* c) - Asigna c = aXb.
 (f) void matrix free(Matrix* m) - Elimina una matriz, liberando sus recursos.
+
 14. Dada la siguiente estructura que declara un Stack Frame, implementar un TDA Pila con al
 menos las operaciones propuestas a continuación.
 struct StackFrameStruct

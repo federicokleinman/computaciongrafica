@@ -29,6 +29,7 @@ int main(int argc, const char* argv[]) {
             case 8 : ej8(); break;
 //            case '9' :
             case 10 :  ej10(); break;
+            case 11 :  ej11(); break;
 
             default :
                 printf("No existe un ejercicio con este el numero  %s\n", argv[1]);
