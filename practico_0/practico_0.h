@@ -16,6 +16,7 @@ void ej6(const char * path);
 void ej7();
 void ej8();
 void ej10();
+void ej12(int filas, int columnas);
 
 /*
 
@@ -220,5 +221,44 @@ void ej10(){
 }
 
 
+// TODO Mergear EJ11 maquina de casa
 
+/*
+ * 12. Desarrollar el mismo programa del problema anterior, organizando los elementos en una estrucura
+ * lógica bidimensional (una “matriz de Vec3”). El usuario proporcionará las dimensiones de
+ * la misma como entrada.
+ */
+void ej12(int filas, int columnas){
+
+    printf("Ej 12: Areglo Bidimensional [%d] [%d]", filas, columnas);
+
+    int i;	 // Recorre filas
+    int j;	 // Recorre columnas
+    Vec3 **array;
+
+    // reserva de memoria
+    array = (Vec3**) malloc(filas* sizeof(Vec3*));
+    for (i=0;i<filas;i++)
+        array[i] = (Vec3*)malloc(columnas*sizeof(Vec3));
+
+    // Damos Valores a la Matriz
+    for (i=0;i<filas;i++)
+        array[i] = (Vec3*)malloc(columnas*sizeof(Vec3));
+
+    // Crea vec3 para cada posicion
+    for (i=0;i<filas;i++)
+        for (j=0;j<columnas;j++)
+            array[i][j] = vec3InitRandom(); //TODO Cambiar esta funcion InitRandom del ej11
+
+    // Dibujamos la Matriz en pantalla
+    for (i=0; i<filas; i++)
+    {
+        printf("\n");
+        for (j=0; j<columnas; j++) {
+            printf("[%d] [%d]", i,j);
+            toString(&array[i][j]);
+        }
+    }
+
+}
 
