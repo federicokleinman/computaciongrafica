@@ -58,12 +58,12 @@ la misma como entrada.
 Implementar la lógica necesaria para representar una Matriz de NXM floats con la siguiente
 interfaz y funciones:
 
-*(a) Matrix* matrix new(int n, int m) - Crea una matriz de dimensiones NXM
-*(b) Matrix* matrix identity(int n, int m) - Crea una matriz de dimensiones NXM inicializada en la Identidad.
-*(c) float matrix get elem(Matrix* m, int r, int c) - Devuelve el elemento almacenado en m[r, c]si y solo si r y c son indices válidos dentro de m.
-*(d) void matrix set elem(Matrix* m, int r, int c, float val) - Asigna m[r, c] = val si y solo si r y c son indices válidos dentro de m.
-*(e) void matrix mult(Matrix* a, Matrix* b, Matrix* c) - Asigna c = aXb.
-*(f) void matrix free(Matrix* m) - Elimina una matriz, liberando sus recursos.
+* (a) Matrix* matrix_new(int n, int m) - Crea una matriz de dimensiones NXM
+* (b) Matrix* matrix_identity(int n, int m) - Crea una matriz de dimensiones NXM inicializada en la Identidad.
+* (c) float matrix_get_elem(Matrix* m, int r, int c) - Devuelve el elemento almacenado en m[r, c]si y solo si r y c son indices válidos dentro de m.
+* (d) void matrix_set elem(Matrix* m, int r, int c, float val) - Asigna m[r, c] = val si y solo si r y c son indices válidos dentro de m.
+* (e) void matrix_mult(Matrix* a, Matrix* b, Matrix* c) - Asigna c = aXb.
+* (f) void matrix_free(Matrix* m) - Elimina una matriz, liberando sus recursos.
 
 # 14.
 Dada la siguiente estructura que declara un Stack Frame, implementar un TDA Pila con al menos las operaciones propuestas a continuación.
@@ -77,11 +77,11 @@ typedef struct StackFrameStruct StackFrame;
 
 Operaciones:
 
-*(a) Stack* stack new() - Crea una nueva pila vac´ıa.
-*(b) int stack empty(Stack* s) - Devuelve 1 si la pila se encuentra vac´ıa, 0 en otro caso.
-*(c) void stack push(Stack* s, void* data) - Agrega un nuevo elemento como tope de la pila.
-*(d) void* stack pop(Stack* s) - Remueve el tope de la pila, devolviendo los datos contenidos en él. Si la pila se encontraba vacía, devuelve NULL.
-*(e) void stack free(Stack* s) - Elimina la pila, liberando todos sus recursos excepto los datos almacenados.
+* (a) Stack* stack new() - Crea una nueva pila vac´ıa.
+* (b) int stack empty(Stack* s) - Devuelve 1 si la pila se encuentra vac´ıa, 0 en otro caso.
+* (c) void stack push(Stack* s, void* data) - Agrega un nuevo elemento como tope de la pila.
+* (d) void* stack pop(Stack* s) - Remueve el tope de la pila, devolviendo los datos contenidos en él. Si la pila se encontraba vacía, devuelve NULL.
+* (e) void stack free(Stack* s) - Elimina la pila, liberando todos sus recursos excepto los datos almacenados.
 Desarrollar un programa que instancia una pila, almacena distintos tipos de datos y luego libera sus recursos.
 
 # 15.
@@ -96,14 +96,14 @@ typedef struct BlockStruct Block;
 
 Operaciones:
 
-*(a) List* list new() - Crea una nueva lista vac´ıa.
-*(b) int list empty(List* l) - Devuelve 1 si la lista se encuentra vac´ıa, 0 en otro caso.
-*(c) unsigned int list size(List* l) - Devuelve el largo de la lista l.
-*(d) void list add(List* l, Block* b) - Agrega el bloque b como último elemento de la lista l.
-*(e) void list insert(List* l, int indx, Block* b) - Inserta el bloque b en la posición indx de la lista l si y solo si 0 ≤ indx ≤ n, donde n es el largo de la lista l.
-*(f) int list find(List* l, Block* b) - Devuelve la posición en la lista del bloque b o -1 si el bloque no se encuentra presente.
-*(g) Block* list remove(List* l, int indx) - Remueve el elemento en la posición indx de la lista l. Devuelve el bloque que se encontraba en dicha posición o NULL si indx ≥ n, donde n es el largo de la lista.
-*(h) void list free(List* l) - Elimina la lista, liberando sus recursos, pero no los de sus bloques.
+* (a) List* list new() - Crea una nueva lista vac´ıa.
+* (b) int list empty(List* l) - Devuelve 1 si la lista se encuentra vac´ıa, 0 en otro caso.
+* (c) unsigned int list size(List* l) - Devuelve el largo de la lista l.
+* (d) void list add(List* l, Block* b) - Agrega el bloque b como último elemento de la lista l.
+* (e) void list insert(List* l, int indx, Block* b) - Inserta el bloque b en la posición indx de la lista l si y solo si 0 ≤ indx ≤ n, donde n es el largo de la lista l.
+* (f) int list find(List* l, Block* b) - Devuelve la posición en la lista del bloque b o -1 si el bloque no se encuentra presente.
+* (g) Block* list remove(List* l, int indx) - Remueve el elemento en la posición indx de la lista l. Devuelve el bloque que se encontraba en dicha posición o NULL si indx ≥ n, donde n es el largo de la lista.
+* (h) void list free(List* l) - Elimina la lista, liberando sus recursos, pero no los de sus bloques.
 
 Desarrollar un programa que instancia una lista, almacena distintos tipos de datos y luego libera
 sus recursos.
@@ -123,8 +123,8 @@ typedef VectorStruct Vector;
 
 Operaciones:
 
-*(a) Vector* vector new(unsigned int cap) - Crea un nuevo vector de capacidad inicial indicada.
-*(b) void vector add(Vector* v, float val) - Agrega un elemento al final del vector, incrementando su tamaño. Si el tamaño excede la capacidad, se deberá adquirir más memoria.
-*(c) float vector get at(Vector* v, unsigned int i) - Obtiene el elemento en la posición i del vector.
-*(d) float vector set at(Vector* v, unsigned int i, float val) - Asigna el elemento en la posición i del vector con el valor denotado por val.
-*(e) void vector free(Vector* v) - Elimina el vector, liberando sus recursos.
+* (a) Vector* vector new(unsigned int cap) - Crea un nuevo vector de capacidad inicial indicada.
+* (b) void vector add(Vector* v, float val) - Agrega un elemento al final del vector, incrementando su tamaño. Si el tamaño excede la capacidad, se deberá adquirir más memoria.
+* (c) float vector get at(Vector* v, unsigned int i) - Obtiene el elemento en la posición i del vector.
+* (d) float vector set at(Vector* v, unsigned int i, float val) - Asigna el elemento en la posición i del vector con el valor denotado por val.
+* (e) void vector free(Vector* v) - Elimina el vector, liberando sus recursos.

@@ -2,6 +2,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include "vec3.h"
+#include "Matrix.h"
 
 #define printSizeof(a, type) ({ \
     printf("The number of bytes in a %s is %zu.\n", a, sizeof(type)); \
@@ -276,7 +277,7 @@ void ej12(int filas, int columnas, int a, int b){
     // Crea vec3 para cada posicion
     for (i=0;i<filas;i++)
         for (j=0;j<columnas;j++)
-            array[i][j] = vec3InitHomotecia(a,b); //TODO Cambiar esta funcion InitRandom del ej11
+            array[i][j] = vec3InitHomotecia(a,b);
 
     // Dibujamos la Matriz en pantalla
     for (i=0; i<filas; i++)
@@ -288,5 +289,28 @@ void ej12(int filas, int columnas, int a, int b){
         }
     }
 
+}
+
+/**
+ * # 13.
+Implementar la lógica necesaria para representar una Matriz de NXM floats con la siguiente
+interfaz y funciones:
+
+* (a) Matrix* matrix_new(int n, int m) - Crea una matriz de dimensiones NXM
+* (b) Matrix* matrix_identity(int n, int m) - Crea una matriz de dimensiones NXM inicializada en la Identidad.
+* (c) float matrix_get_elem(Matrix* m, int r, int c) - Devuelve el elemento almacenado en m[r, c]si y solo si r y c son indices válidos dentro de m.
+* (d) void matrix_set elem(Matrix* m, int r, int c, float val) - Asigna m[r, c] = val si y solo si r y c son indices válidos dentro de m.
+* (e) void matrix_mult(Matrix* a, Matrix* b, Matrix* c) - Asigna c = aXb.
+* (f) void matrix_free(Matrix* m) - Elimina una matriz, liberando sus recursos.
+ */
+void ej13(int filas, int columnas){
+    Matrix* pMatrix = matrix_new(filas,columnas);
+    matrix_toString(pMatrix);
+
+    float f = matrix_get_elem(pMatrix,1,RAND_MAX);
+    printf("[%f] ", f);   // lanza error de indice.
+
+//    Matrix* pMatrixIdentidad = matrix_identity(filas,columnas);
+//    matrix_toString(pMatrixIdentidad);
 }
 
