@@ -306,11 +306,48 @@ interfaz y funciones:
 void ej13(int filas, int columnas){
     Matrix* pMatrix = matrix_new(filas,columnas);
     matrix_toString(pMatrix);
+    matrix_free(pMatrix);
 
-    float f = matrix_get_elem(pMatrix,1,RAND_MAX);
-    printf("[%f] ", f);   // lanza error de indice.
+//    float f = matrix_get_elem(pMatrix,1,RAND_MAX);
+//    printf("[%f] ", f);   // lanza error de indice.
 
-//    Matrix* pMatrixIdentidad = matrix_identity(filas,columnas);
-//    matrix_toString(pMatrixIdentidad);
+    Matrix* pMatrixIdentidad = matrix_identity(filas,columnas);
+    matrix_toString(pMatrixIdentidad);
+    matrix_free(pMatrixIdentidad);
+
+
+    // Prueba de multiplicacion de matrices
+    Matrix* pMatrixA = matrix_new(3,3);
+    Matrix* pMatrixB = matrix_new(3,3);
+    Matrix* pMatrixC = matrix_new(3,3);
+
+    matrix_set_elem(pMatrixA,0,0,2);
+    matrix_set_elem(pMatrixA,0,1,0);
+    matrix_set_elem(pMatrixA,0,2,1);
+    matrix_set_elem(pMatrixA,1,0,3);
+    matrix_set_elem(pMatrixA,1,1,0);
+    matrix_set_elem(pMatrixA,1,2,0);
+    matrix_set_elem(pMatrixA,2,0,5);
+    matrix_set_elem(pMatrixA,2,1,1);
+    matrix_set_elem(pMatrixA,2,2,1);
+
+
+    matrix_set_elem(pMatrixB,0,0,1);
+    matrix_set_elem(pMatrixB,0,1,0);
+    matrix_set_elem(pMatrixB,0,2,1);
+    matrix_set_elem(pMatrixB,1,0,1);
+    matrix_set_elem(pMatrixB,1,1,2);
+    matrix_set_elem(pMatrixB,1,2,1);
+    matrix_set_elem(pMatrixB,2,0,1);
+    matrix_set_elem(pMatrixB,2,1,1);
+    matrix_set_elem(pMatrixB,2,2,0);
+
+    matrix_mult(pMatrixA,pMatrixB, pMatrixC);
+    matrix_toString(pMatrixC);
+
+    matrix_free(pMatrixA);
+    matrix_free(pMatrixB);
+    matrix_free(pMatrixC);
+
 }
 
