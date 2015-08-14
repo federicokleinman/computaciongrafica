@@ -5,7 +5,7 @@
 /**
  * Para ejecutar los ejercicios, debemos recibir por linea de comandos, el numero de ejercicio, y luego parametros opcionales.
  */
-int main(int argc, const char* argv[]) {
+int main222(int argc, const char* argv[]) {
 
     int count;
     int d;
