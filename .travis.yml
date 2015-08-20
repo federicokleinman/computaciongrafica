@@ -4,8 +4,6 @@ sudo: true
 compiler:
   - gcc
 
-install: make get-deps
-
 build: make
 
 before_script:
