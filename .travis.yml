@@ -1,7 +1,1 @@
-language: cpp
-compiler: gcc
-
-before_script: ls
-
-script:
-  - make -C Build
+language: c
