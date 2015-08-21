@@ -1,5 +1,4 @@
 language: cpp
-sudo: true
 
 compiler:
   - gcc
@@ -15,5 +14,3 @@ script: make
 
 after_success:
   - ./CompGrafica
-
-
