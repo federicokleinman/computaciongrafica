@@ -15,7 +15,7 @@ void RunAllTests(void) {
     CuSuiteDetails(suite, output);
     printf("%s\n", output->buffer);
 
-//********************************************************
+//******************** MATRIX SUITE *******************
     CuString *output2 = CuStringNew();
     CuSuite* suite2 = CuSuiteNew();
 
