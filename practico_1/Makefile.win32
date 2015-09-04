@@ -1,0 +1,50 @@
+# Edite los siguientes valores para configurar acorde a su ambiente de desarrollo:
+
+# ubicacion del directorio "include" del ambiente:
+INCLUDES=-I..\mingw\include
+
+# ubicacion del directorio "lib" del ambiente:
+LIB_DIRS=-L..\mingw\lib
+
+# agregue aqui, separado con espacios, cada archivo .c que produzca.
+# renombre la extension .c a .o (ejemplo.c -> ejemplo.o):
+OBJECTS = framework\color.o framework\mm.o framework\canvas.o main.o
+
+# nombre a asignar al ejecutable producido:
+EXE = cg.exe
+
+# No edite por debajo de esta linea
+
+CC = gcc
+
+CFLAGS = -Wall -Werror -std=c99
+LD_FLAGS = -lmingw32 -lSDLmain -lSDL -luser32
+
+CPPCHECK = cppcheck --enable=all --error-exitcode=255 -f
+
+all: $(EXE)
+
+main.o: main.c Makefile.win32
+	@echo "Building $@..."
+	@$(CPPCHECK) $<
+	@$(CC) -c $< $(INCLUDES) $(CFLAGS) -o $@
+
+%.o: %.c %.h Makefile.win32
+	@echo "Building $@..."
+	@$(CPPCHECK) $<
+	@$(CC) -c $< $(INCLUDES) $(CFLAGS) -o $@
+
+
+$(EXE): $(OBJECTS)
+	@echo "Linking..."
+	@$(CC) $(OBJECTS) $(INCLUDES) $(CFLAGS) $(LIB_DIRS) $(LD_FLAGS) -o $(EXE)
+	@echo "Generated $(EXE)"
+
+clean:
+	@echo "Cleaning up..."
+	@del $(OBJECTS)
+	@del $(EXE)
+
+run: $(EXE)
+	.\$(EXE)
+
