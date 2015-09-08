@@ -1,29 +1,41 @@
 #include "framework/canvas.h"
 #include "framework/mm.h"
+#include "GL/gl.h"
 
 int main(int argc, char* argv[])
 {
+	#ifdef WIN32
+    freopen( "CON", "w", stdout );
+    freopen( "CON", "w", stderr );
+    #endif
+
 	// Crear una ventana de 500x500 pixels:
-	int cw = 500;
-	int ch = 500;
+	int cw = 900;
+	int ch = 900;
+
 	cg_init(cw, ch, NULL);
 
-	// Dibujar un pequeno "+" en el centro de la ventana:
-	Color color = cg_color_new(0xff, 0x0, 0x0);
-	//int x, y;
-	for (int x = -1; x <= 1; x++)
-	{
-		for (int y = -1; y <= 1; y++)
-		{
-			if (x == 0 || y == 0)
-			{
-				cg_putpixel(x, y, color);
-			}
-		}
-	}
-	
-	// Actualizar la pantalla:
-	cg_repaint();
+	printf("GL Version: %s\n", glGetString(GL_VERSION));
+
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+
+	glMatrixMode(GL_PROJECTION);
+	glViewport(0,0,cw, ch);
+	glFrustum(-1,1,-1,1,1,1000);
+
+	float ang = 0.0f;
+	float verts[12] = {-1.0f, -1.0f, -2.0f,
+					   1.0f, -1.0f, -2.0f,
+					   0.0f,  1.0f, -2.0f,
+					   2.0f,  1.0f, -2.0f};
+
+	float colors[12] = {1.0f, 0.0f, 0.0f,
+						0.0f, 1.0f, 0.0f,
+						0.0f, 0.0f, 1.0f,
+						1.0f, 1.0f, 0.0f};
+
+	unsigned int indexs[6] = {0, 1, 2, 1, 2, 3};
 
 	int done = 0;
 	while (!done)
@@ -33,14 +45,45 @@ int main(int argc, char* argv[])
 		{
 			switch (event.type)
 			{
-				case SDL_KEYDOWN: 
+				case SDL_KEYDOWN:
 					if (event.key.keysym.sym != SDLK_ESCAPE)
 						break;
 				case SDL_QUIT : done = 1;
 			}
 		}
-	}
 
+		glMatrixMode(GL_MODELVIEW);
+		glLoadIdentity();
+		glTranslatef(0.0f, 0.0f, -2.0f);
+		glRotatef(ang, 0.0f, 1.0f, 0.0f);
+		glTranslatef(0.0f, 0.0f, 2.0f);
+		//ang += 0.1f;
+
+		glClear(GL_COLOR_BUFFER_BIT);
+		/*glBegin(GL_TRIANGLES);
+            glColor3f(1.0f, 0.0f, 0.0f);
+            glVertex3f(-1.0f, -1.0f, -2.0f);
+
+            glColor3f(0.0f, 1.0f, 0.0f);
+            glVertex3f(1.0f, -1.0f, -2.0f);
+
+            glColor3f(0.0f, 0.0f, 1.0f);
+            glVertex3f(0.0f,1.0f, -2.0f);
+
+            glColor3f(1.0f, 1.0f, 0.0f);
+            glVertex3f(-2.0f, 1.0f, -2.0f);
+        glEnd();*/
+		glEnableClientState(GL_VERTEX_ARRAY);
+		glVertexPointer(3, GL_FLOAT, 0, verts);
+		glEnableClientState(GL_COLOR_ARRAY);
+		glColorPointer(3, GL_FLOAT, 0, colors);
+
+		//glDrawArrays(GL_TRIANGLES, 0, 9);
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, indexs);
+		glDisableClientState(GL_VERTEX_ARRAY);  glDisableClientState(GL_COLOR_ARRAY);
+
+		cg_repaint();
+	}
 	// Liberar recursos:
 	cg_close();
 
@@ -49,7 +92,5 @@ int main(int argc, char* argv[])
 	printf("pint is a pointer: %p\n", pint);
 	cg_free(pint); // olvidarse de liberar este objeto produce un mensaje
 
-	
 	return 0;
 }
-

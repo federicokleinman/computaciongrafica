@@ -2,7 +2,7 @@
 # acorde a su ambiente de desarrollo:
 
 # ubicacion del directorio "include" del ambiente:
-INCLUDES=`sdl-config --cflags`
+INCLUDES=`sdl-config --cflags` -framework OpenGL
 
 # ubicacion del directorio "lib" del ambiente:
 LIB_DIRS=`sdl-config --libs`
@@ -18,22 +18,22 @@ EXE = cg
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -DAPPLEMAC -std=c99
+CFLAGS = -Wall -DAPPLEMAC -std=c99 -ggdb -O0
 LD_FLAGS = 
 #LD_FLAGS = -lSDLmain -lSDL
 
-CPPCHECK = cppcheck --enable=all --error-exitcode=255 -f
+#CPPCHECK = cppcheck --enable=all --error-exitcode=255 -f
 
 all: $(EXE)
 
 main.o: main.c Makefile.mac
 	@echo "\nBuilding $@..."
-	@$(CPPCHECK) $<
+	#@$(CPPCHECK) $<
 	@$(CC) -c $< $(INCLUDES) $(CFLAGS) -o $@
 
 %.o: %.c %.h Makefile.mac
 	@echo "\nBuilding $@..."
-	@$(CPPCHECK) $<
+	#@$(CPPCHECK) $<
 	@$(CC) -c $< $(INCLUDES) $(CFLAGS) -o $@
 
 

@@ -17,21 +17,18 @@ EXE = cg.exe
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -std=c99
-LD_FLAGS = -lmingw32 -lSDLmain -lSDL -luser32
+CFLAGS = -Wall -std=c99 -DWIN32
+LD_FLAGS = -lmingw32 -lSDLmain -lSDL -luser32 -lglu32 -lopengl32
 
-CPPCHECK = cppcheck --enable=all --error-exitcode=255 -f
 
 all: $(EXE)
 
 main.o: main.c Makefile.win32
 	@echo "Building $@..."
-	@$(CPPCHECK) $<
 	@$(CC) -c $< $(INCLUDES) $(CFLAGS) -o $@
 
 %.o: %.c %.h Makefile.win32
-	@echo "Building $@..."
-	@$(CPPCHECK) $<
+	@echo "Building $@..."s
 	@$(CC) -c $< $(INCLUDES) $(CFLAGS) -o $@
 
 

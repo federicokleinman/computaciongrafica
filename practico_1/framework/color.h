@@ -2,8 +2,7 @@
 #define COLOR_H
 
 #ifndef APPLEMAC
-//#include <SDL/SDL.h>
-#include "../SDL/SDL.h"
+#include <SDL/SDL.h>
 #else
 #include <SDL.h>
 #endif //APPLEMAC
