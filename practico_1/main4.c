@@ -66,7 +66,8 @@ int main(int argc, char* argv[])
 		glColorPointer(3, GL_FLOAT, 0, colors);
 
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, indexs);
-		glDisableClientState(GL_VERTEX_ARRAY);  glDisableClientState(GL_COLOR_ARRAY);
+		glDisableClientState(GL_VERTEX_ARRAY);
+		glDisableClientState(GL_COLOR_ARRAY);
 
 		cg_repaint();
 	}
