@@ -3,8 +3,8 @@
 
 
 #define MAX_GAME_OBJECTS 100
-#define MAX_FACES 1000
-#define MAX_VERTICES 1000
+#define MAX_FACES 100000
+#define MAX_VERTICES 100000
 
 typedef struct
 {

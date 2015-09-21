@@ -69,10 +69,10 @@ int main(int argc, char* argv[])
 	float pitch = 0.0f;
 	float ang_vel = 1.0f;
 
-	Obj* knight = obj_load("Models/knight.obj");
+	Obj* obj = obj_load("Models/knight.obj");
 
-	printf("num of faces %d\n", knight->numfaces);    // delete
-	printf("num of vertices %d\n", knight->numverts);  // delete
+	printf("num of faces %d\n", obj->numfaces);    // delete
+	printf("num of vertices %d\n", obj->numverts);  // delete
 
 
 	char done = 0;
@@ -147,11 +147,11 @@ int main(int argc, char* argv[])
 
 		glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 
-		obj_render(knight);
+		obj_render(obj);
 
 		cg_repaint();
 	}
-	obj_free(knight);
+	obj_free(obj);
 	// Liberar recursos:
 	cg_close();
 
