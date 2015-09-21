@@ -188,8 +188,9 @@ Obj* obj_load(char *filename)
 
 void obj_render(Obj * obj)
 {
+    int i;
     glBegin(GL_TRIANGLES);
-    for(int i=0; i< obj->numfaces; i++) {
+    for(i=0; i< obj->numfaces; i++) {
         glVertex3f(
                 obj->vertices[obj->faces[i]->vert[0] -1]->x,
                 obj->vertices[obj->faces[i]->vert[0] -1]->y,
