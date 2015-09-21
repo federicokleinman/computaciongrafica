@@ -210,12 +210,13 @@ void obj_render(Obj * obj)
 }
 
 void obj_free(Obj * obj) {
-    for (int i = 0; i < obj->numfaces; ++i) {
+    int i;
+    for (i=0; i < obj->numfaces; ++i) {
         free(obj->faces[i]);
     }
 
-    for (int j = 0; j < obj->numverts; ++j) {
-        free(obj->vertices[j]);
+    for (i = 0; i < obj->numverts; ++i) {
+        free(obj->vertices[i]);
     }
     free(obj);
 }
