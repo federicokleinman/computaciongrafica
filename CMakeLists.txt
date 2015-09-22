@@ -13,8 +13,6 @@ set(SOURCE_FILES
     practico_0/Matrix.c
     practico_0/Matrix4x4.c
     practico_0/Matrix4x4.h
-    practico_1/Obj.c
-    practico_1/Obj.h
     testSuite/CuTest.c
     testSuite/CuTest.h
     testSuite/StrUtil.c
