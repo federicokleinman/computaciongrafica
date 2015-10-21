@@ -14,7 +14,7 @@ Correr el script run.sh
 | M     | Activa imagen Solida / Malla Alambre |
 | Z     | Activa / Desactiva GL_DEPTH_TEST     |
 | B     | Activa / Desactiva GL_CULL_FACE      |
-|-------|--------------------------------------|
+|||
 | 0     | Activa / Desactiva GL_LIGHT0         |
 | 1     | Activa / Desactiva GL_LIGHT1         |
 | 2     | Activa / Desactiva GL_LIGHT2         |
@@ -23,7 +23,7 @@ Correr el script run.sh
 | 5     | Activa / Desactiva GL_LIGHT5         |
 | 6     | Activa / Desactiva GL_LIGHT6         |
 | 7     | Activa / Desactiva GL_LIGHT7         |
-|-------|--------------------------------------|
+|||
 | RIGHT | Rota a la derecha horizontalmente    |
 | LEFT  | Rota a la izquierda horizontalmente  |
 | UP    | Rota hacia arriba verticalmente      |
@@ -31,11 +31,11 @@ Correr el script run.sh
 
 # Resultadoss
 
-** TODO **
+**Ejemplo1**
 
 ![alt text](https://github.com/nandotorterolo/computaciongrafica/blob/master/obligatorio/3/Example1.png "Example1")
 
-** TODO **
+**Ejemplo**
 
 ![alt text](https://github.com/nandotorterolo/computaciongrafica/blob/master/obligatorio/3/Example2.png "Example1")
 
