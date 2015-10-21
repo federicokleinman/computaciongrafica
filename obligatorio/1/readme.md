@@ -5,7 +5,7 @@
 Rasterización de modelos OBJ, dibujando triángulos sólidos o una “malla de alambre”.
 
 
-# Ejecucion.
+# Ejecución.
 
 Correr el script run.sh
 

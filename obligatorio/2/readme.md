@@ -4,8 +4,7 @@
 
 Determinación de superficies ocultas por medio de Z-Buffer y optimización por Backface culling.
 
-
-# Ejecucion.
+# Ejecución.
 
 Correr el script run.sh
 
