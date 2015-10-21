@@ -18,5 +18,14 @@ Correr el script run.sh
 | UP    | Rota hacia arriba verticalmente      |
 | DOWN  | Rota hacia abajo verticalmente       |
 
-# Resultados
+# Resultadoss
+
+**Solido**
+
+![alt text](https://github.com/nandotorterolo/computaciongrafica/blob/master/obligatorio/1/Solido.png "Solido")
+
+**Maya de alambre**
+
+![alt text](https://github.com/nandotorterolo/computaciongrafica/blob/master/obligatorio/1/MallaAlambre.png "MallaAlambre")
+
 
