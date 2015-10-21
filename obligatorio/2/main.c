@@ -4,7 +4,7 @@
 #include "GL/gl.h"
 
 /**
- * 1. Rasterización de modelos OBJ, dibujando triángulos sólidos o una “malla de alambre”.
+ * 2. Determinación de superficies ocultas por medio de Z-Buffer y optimización por Backface culling.
  */
 int main(int argc, char* argv[])
 {
