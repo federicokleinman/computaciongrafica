@@ -10,16 +10,16 @@ Tomando como punto de partida los trabajos prácticos desarrollados hasta la fec
 
 Los problemas obligatorios a resolver son:
 
-* Rasterización de modelos OBJ, dibujando triángulos sólidos o una “malla de alambre”.
-* Determinación de superficies ocultas por medio de Z-Buffer y optimización por Backface culling.
-* Soporte para al menos 8 luces, puntuales y/o direccionales.
-* Sombreado por medio de la técnica Gouraud Shading.
-* Mapeo de texturas, con filtrado bilineal.
-* Implementación de una gestor de escena en forma de árbol (Scene Graph). Esta estructura debe tener las siguientes características:
-  * Cada nodo del árbol debe tener los atributos posición, escala, y rotaciones, de los cuales se deducirá la matriz modelo del objeto contenido en dicho nodo.
-  * Cada objeto debe heredar las tranformaciones de su objeto padre.
-  * Cada nodo del arbol puede alojar una geometría dibujable (OBJ) o una luz.
-* Implementar una cámara movil controlable por entradas de teclado y/o mouse.
+1. Rasterización de modelos OBJ, dibujando triángulos sólidos o una “malla de alambre”.
+2. Determinación de superficies ocultas por medio de Z-Buffer y optimización por Backface culling.
+3. Soporte para al menos 8 luces, puntuales y/o direccionales.
+4. Sombreado por medio de la técnica Gouraud Shading.
+5. Mapeo de texturas, con filtrado bilineal.
+6. Implementación de una gestor de escena en forma de árbol (Scene Graph). Esta estructura debe tener las siguientes características:
+   Cada nodo del árbol debe tener los atributos posición, escala, y rotaciones, de los cuales se deducirá la matriz modelo del objeto contenido en dicho nodo.
+   Cada objeto debe heredar las tranformaciones de su objeto padre.
+   Cada nodo del arbol puede alojar una geometría dibujable (OBJ) o una luz.
+7. Implementar una cámara movil controlable por entradas de teclado y/o mouse.
 
 ## Problemas complementarios
 
