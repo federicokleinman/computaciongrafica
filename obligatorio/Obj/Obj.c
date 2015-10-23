@@ -10,7 +10,6 @@ FILE *stream;
 Obj *gameobject[MAX_GAME_OBJECTS];
 int numobjects = 0,objectsInFile = 0;
 
-// determine number of objects in currently open .obj file and update 'numobjects' global
 void obj_CountObjects()
 {
     char s[100];
@@ -38,7 +37,6 @@ void obj_CountObjects()
     numobjects += objectsInFile;
 }
 
-// Positions file pointer at line in .obj file in prep for sequential data parsing what data can be 'f' for 'faces' or 'v' for 'vertices'
 int ObjFileQue(int whichobject,char whatdata)
 {
     char s[100],objectname[100];
@@ -46,9 +44,7 @@ int ObjFileQue(int whichobject,char whatdata)
     int numobj = 0;
     int linecount = 0,i;
 
-    // reposition at start of file...
     rewind(stream);
-    // Find the object
     while ((fgets(s,100,stream)) != NULL)
     {
         linecount++;
@@ -74,11 +70,6 @@ int ObjFileQue(int whichobject,char whatdata)
                         {
                             if (s[0] == whatdata)
                             {
-                                // we are here... reposition file pointer
-                                // so that calling function will begin reading
-                                // in correct place.
-                                // must use linecount because of screwy
-                                // things that happen with 'fseek' in text mode
                                 rewind(stream);
                                 for (i=0;i<linecount;i++)
                                     fgets(s,100,stream);
@@ -97,7 +88,6 @@ int ObjFileQue(int whichobject,char whatdata)
 
 void LoadFaces(int theobject)
 {
-    // load face data for specified object from .obj
     char s[100];
     int numsides,vert[4];
     char *tok;
@@ -131,7 +121,6 @@ void LoadFaces(int theobject)
 
 void LoadVertices(int theobject)
 {
-    // load vertex data for specified object from .obj
     char s[100];
     char *tok;
     char temp[100];
@@ -169,16 +158,12 @@ Obj* obj_load(char *filename)
 
     if((stream = fopen( filename, "r+t" )) != NULL )
     {
-        // load objects, faces, and vertices How many objects in this file ?
         obj_CountObjects();
         for (i=numobjects - objectsInFile;i<numobjects;i++)
         {
-            // need error check here and other mallocs
             newobject = (Obj *)malloc(sizeof(Obj));
             gameobject[i] = newobject;
-            // Load in the faces
             LoadFaces(i - (numobjects - objectsInFile));
-            // Load the vertices
             LoadVertices(i - (numobjects - objectsInFile));
         }
         fclose( stream );
