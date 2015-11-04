@@ -1,11 +1,11 @@
 ### Computación Gráfica
 
-# Parte 1 Obligatorio.
+# Parte 1 Obligatorio
 
 Rasterización de modelos OBJ, dibujando triángulos sólidos o una “malla de alambre”.
 
 
-# Ejecución.
+# Ejecución
 
 Correr el script run.sh
 
@@ -18,7 +18,7 @@ Correr el script run.sh
 | UP    | Rota hacia arriba verticalmente      |
 | DOWN  | Rota hacia abajo verticalmente       |
 
-# Resultadoss
+# Resultados
 
 **Solido**
 

@@ -1,10 +1,10 @@
 ### Computación Gráfica
 
-# Parte 3 Obligatorio.
+# Parte 3 Obligatorio
 
 Soporte para al menos 8 luces, puntuales y/o direccionales.
 
-# Ejecución.
+# Ejecución
 
 Correr el script run.sh
 
@@ -29,7 +29,7 @@ Correr el script run.sh
 | UP    | Rota hacia arriba verticalmente      |
 | DOWN  | Rota hacia abajo verticalmente       |
 
-# Resultadoss
+# Resultados
 
 **Ejemplo1**
 

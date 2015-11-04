@@ -1,10 +1,10 @@
 ### Computación Gráfica
 
-# Parte 2 Obligatorio.
+# Parte 2 Obligatorio
 
 Determinación de superficies ocultas por medio de Z-Buffer y optimización por Backface culling.
 
-# Ejecución.
+# Ejecución
 
 Correr el script run.sh
 
@@ -19,7 +19,7 @@ Correr el script run.sh
 | UP    | Rota hacia arriba verticalmente      |
 | DOWN  | Rota hacia abajo verticalmente       |
 
-# Resultadoss
+# Resultados
 
 **Sin BackFace Culling**
 
