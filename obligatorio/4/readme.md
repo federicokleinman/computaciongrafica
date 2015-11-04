@@ -11,7 +11,7 @@ Correr el script run.sh
 
 | Tecla | Descripcion                          |
 |-------|--------------------------------------|
-| TODO  | Sombreado Gouraud Shading            |
+| G     | Activa Gourand Shading FLAT/SMOOTH   |
 | M     | Activa imagen Solida / Malla Alambre |
 | Z     | Activa / Desactiva GL_DEPTH_TEST     |
 | B     | Activa / Desactiva GL_CULL_FACE      |
@@ -34,10 +34,10 @@ Correr el script run.sh
 
 **Ejemplo1**
 
-// TODO ![alt text](https://github.com/nandotorterolo/computaciongrafica/blob/master/obligatorio/3/Example1.png "Example1")
+![alt text](https://github.com/nandotorterolo/computaciongrafica/blob/master/obligatorio/4/Example1.png "Example1")
 
 **Ejemplo**
 
-// TODO ![alt text](https://github.com/nandotorterolo/computaciongrafica/blob/master/obligatorio/3/Example2.png "Example1")
+![alt text](https://github.com/nandotorterolo/computaciongrafica/blob/master/obligatorio/4/Example2.png "Example2")
 
 
