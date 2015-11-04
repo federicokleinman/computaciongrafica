@@ -1,10 +1,10 @@
 ### Computación Gráfica
 
-# Parte 4 Obligatorio.
+# Parte 4 Obligatorio
 
 Sombreado por medio de la técnica Gouraud Shading.
 
-# Ejecución.
+# Ejecución
 
 Correr el script run.sh
 
@@ -30,7 +30,7 @@ Correr el script run.sh
 | UP    | Rota hacia arriba verticalmente      |
 | DOWN  | Rota hacia abajo verticalmente       |
 
-# Resultadoss
+# Resultados
 
 **Ejemplo1**
 
