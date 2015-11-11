@@ -13,6 +13,10 @@ float * vertices;
 float * normales;
 float * texturas;
 
+void creteArrayVertices(Obj * obj);
+void creteArrayNormales(Obj * obj);
+void creteArrayTexturas(Obj * obj);
+
 void obj_CountObjects()
 {
     char s[100];
@@ -125,37 +129,45 @@ void LoadFaces(int theobject)
 void LoadFaces2(int theobject)
 {
     char s[100];
-    int numsides,vert[4], norm[4], text[4];
-    char *tok;
+    int vert[4], norm[4], text[4];
+    char *tok, *tok2;
     char temp[100];
-    int i,facecount = 0;
+    int i,j,facecount = 0;
     FACE2 *newface;
 
     if(ObjFileQue(theobject,'f')){
         while ((fgets(s,100,stream)) != NULL && s[0] == 'f')
         {
-            numsides = 4;
             tok = strtok(s," ");
             i = 0;
             while ((tok = strtok(NULL," ")) != NULL)
             {
+//                strcpy(temp,tok);
+//                temp[strcspn(temp,"/")] = 0;
+//                vert[i] = (int)strtol(temp,NULL,10);
+//
+//                strcpy(temp,tok);
+//                temp[strcspn(temp,"/")] = 0;
+//                norm[i] = (int)strtol(temp,NULL,10);
+//
+//                strcpy(temp,tok);
+//                temp[strcspn(temp,"/")] = 0;
+//                text[i] = (int)strtol(temp,NULL,10);
                 strcpy(temp,tok);
-                temp[strcspn(temp,"/")] = 0;
-                vert[i] = (int)strtol(temp,NULL,10);
-
-                strcpy(temp,tok);
-                temp[strcspn(temp,"/")] = 0;
-                norm[i] = (int)strtol(temp,NULL,10);
-
-                strcpy(temp,tok);
-                temp[strcspn(temp,"/")] = 0;
-                text[i] = (int)strtol(temp,NULL,10);
+                tok2 = strtok(temp,"/");
+//                printf(tok2);
+                text[i] = (int)strtol(tok2,NULL,10);
+                tok2 = strtok(NULL,"/");
+//                printf(tok2);
+                norm[i] = (int)strtol(tok2,NULL,10);
+                tok2 = strtok(NULL,"/");
+//                printf(tok2);
+                vert[i] = (int)strtol(tok2,NULL,10);
 
                 i++;
             }
             newface = (FACE2 *)malloc(sizeof(FACE2));
             gameobject[theobject + (numobjects - objectsInFile)]->faces2[facecount] = newface;
-            //gameobject[theobject + (numobjects - objectsInFile)]->faces2[facecount]->numsides = numsides;
             for(i=0;i<3;i++) {
                 gameobject[theobject + (numobjects - objectsInFile)]->faces2[facecount]->vertices[i] = vert[i];
                 gameobject[theobject + (numobjects - objectsInFile)]->faces2[facecount]->normales[i] = norm[i];
@@ -164,6 +176,7 @@ void LoadFaces2(int theobject)
             facecount++;
         }
         gameobject[theobject + (numobjects - objectsInFile)]->numfaces2 = facecount;
+        printf("Debug: numero de caras faces v2: %d \n",facecount);
     }
 }
 
@@ -272,6 +285,12 @@ Obj* obj_load(char *filename)
         for (i=numobjects - objectsInFile; i<numobjects; i++)
         {
             newobject = (Obj *)malloc(sizeof(Obj));
+            newobject->numfaces=0;
+            newobject->numfaces2=0;
+            newobject->numNormales=0;
+            newobject->numverts=0;
+            newobject->numTexturas=0;
+
             gameobject[i] = newobject;
             LoadVertices(i - (numobjects - objectsInFile));
             LoadNormales(i - (numobjects - objectsInFile));
@@ -312,8 +331,7 @@ void obj_render(Obj * obj)
 
 void creteArrayVertices(Obj * obj)
 {
-    printf("numero de vertices %d \n", obj->numverts);
-    printf("numero de caras faces2 %d \n", obj->numfaces2);
+    printf("Debug: numero de vertices %d \n", obj->numverts);
     int i;
     int verticesArraySize = obj->numfaces2*3*3;
     vertices = (float *) malloc(sizeof(float) * verticesArraySize);
@@ -335,8 +353,7 @@ void creteArrayVertices(Obj * obj)
 
 void creteArrayNormales(Obj * obj)
 {
-    printf("numero de normales %d \n", obj->numNormales);
-    printf("numero de caras faces2 %d \n", obj->numfaces2);
+    printf("Debug: Numero de normales %d \n", obj->numNormales);
     int i;
     int normalesArraySize = obj->numfaces2*3*3;  //5706
     normales = (float *) malloc(sizeof(float) * normalesArraySize);
@@ -358,23 +375,27 @@ void creteArrayNormales(Obj * obj)
 
 void creteArrayTexturas(Obj * obj)
 {
-    printf("numero de texturas %d \n", obj->numTexturas);
-    printf("numero de caras faces2 %d \n", obj->numfaces2); // 634
+    printf("Numero de texturas %d \n", obj->numTexturas);
+    printf("Numero de numfaces2 %d \n", obj->numfaces2);
     int i;
     int texturasArraySize = obj->numfaces2*3*2;
     printf("numero texturasArraySize %d \n", texturasArraySize); //634*3*2 = 3804
     texturas = (float *) malloc(sizeof(float) * texturasArraySize);
 
     for (i = 0; i < obj->numfaces2; ++i) {
-        if(i<500) {
-            texturas[6 * i + 0] = obj->texturas[obj->faces2[i]->texturas[0] - 1]->x;
-            texturas[6 * i + 1] = obj->texturas[obj->faces2[i]->texturas[0] - 1]->y;
+        printf("( %d %d %d )",obj->faces2[i]->texturas[0], obj->faces2[i]->texturas[1], obj->faces2[i]->texturas[2]);
+    }
 
-            texturas[6 * i + 2] = obj->texturas[obj->faces2[i]->texturas[1] - 1]->x;
-            texturas[6 * i + 3] = obj->texturas[obj->faces2[i]->texturas[1] - 1]->y;
+    for (i = 0; i < obj->numfaces2; ++i) {
+        if(i<528) {
+            texturas[(6 * i) + 0] = obj->texturas[obj->faces2[i]->texturas[0] - 1]->x;
+            texturas[(6 * i) + 1] = obj->texturas[obj->faces2[i]->texturas[0] - 1]->y;
 
-            texturas[6 * i + 4] = obj->texturas[obj->faces2[i]->texturas[2] - 1]->x;
-            texturas[6 * i + 5] = obj->texturas[obj->faces2[i]->texturas[2] - 1]->y;  //3803
+            texturas[(6 * i) + 2] = obj->texturas[obj->faces2[i]->texturas[1] - 1]->x;
+            texturas[(6 * i) + 3] = obj->texturas[obj->faces2[i]->texturas[1] - 1]->y;
+
+            texturas[(6 * i) + 4] = obj->texturas[obj->faces2[i]->texturas[2] - 1]->x;
+            texturas[(6 * i) + 5] = obj->texturas[obj->faces2[i]->texturas[2] - 1]->y;  //3803
         }
     }
 }
@@ -393,7 +414,7 @@ void obj_render2(Obj * obj)
 
     // draw
 //    glDrawArrays(GL_TRIANGLES, 0, 1902);
-    glDrawArrays(GL_TRIANGLES, 0, 4096);
+    glDrawArrays(GL_TRIANGLES, 0, 2000);
 
     // deactivate vertex arrays after drawing
     glDisableClientState(GL_VERTEX_ARRAY);
@@ -409,17 +430,16 @@ void obj_free(Obj * obj) {
         free(obj->faces2[i]);
     }
 
-    for (i=0; i < MAX_FACES; ++i) {
-        //if (obj->faces[i] != NULL)
-            //free(obj->faces[i]);
+    for (i = 0; i < obj->numfaces; ++i) {
+        free(obj->faces[i]);
     }
 
     for (i = 0; i < obj->numverts; ++i) {
- //       free(obj->vertices[i]);
+        free(obj->vertices[i]);
     }
 
     for (i = 0; i < obj->numTexturas; ++i) {
-   //     free(obj->texturas[i]);
+        free(obj->texturas[i]);
     }
 
     free(vertices);

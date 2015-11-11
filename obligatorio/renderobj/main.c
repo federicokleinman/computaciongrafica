@@ -26,7 +26,7 @@ int main(int argc, char* argv[])
 
     glEnable(GL_LIGHTING);
 
-    //glEnable(GL_NORMALIZE);
+    // glEnable(GL_NORMALIZE);
     float l0[] = {1.0f,1.0f,1.0f,1.0f};
     float la[] = {0.10f,0.10f,0.10f,1.0f};
     float l0p[]= {1.0f,1.0f,1.0f,1.0f};
@@ -46,7 +46,9 @@ int main(int argc, char* argv[])
     float pitch = 0.0f;
     float ang_vel = 1.0f;
 
+
     Obj* box = obj_load("../Models/knight_texturas.obj");
+//    Obj* box = obj_load("../Models/box_texturas.obj");
 	char done = 0;
 	char wireframe = 0;
 	char bfc = 0;
@@ -63,6 +65,7 @@ int main(int argc, char* argv[])
 
     //Cargo la imagen de disco usando SDL_image
     SDL_Surface* surface = IMG_Load("../Models/knight_good.png");
+//    SDL_Surface* surface = IMG_Load("../Models/box.jpg");
     if (surface==NULL) { //Si falla la carga de la imagen, despliego el mensaje de error correspondiente y termino el programa.
         printf("Error: \"%s\"\n",SDL_GetError());
         return 1;
@@ -204,30 +207,6 @@ int main(int argc, char* argv[])
         cg_repaint();
 	}
 
-    int z=0;
-    for(z=0; z<box->numTexturas;z++) printf("%f %f \n",box->texturas[z]->x, box->texturas[z]->y);
-//    for(z=0; z<box->numfaces2;z++) printf("%d %f %f \n",
-//                                          z,
-//                                          box->texturas[box->faces2[z]->texturas[2]]->x,
-//                                          box->texturas[box->faces2[z]->texturas[2]]->y
-//
-//
-//
-//    );
-
-//    for(z=0; z<box->numTexturas;z++) printf("%d %f %f \n",
-    printf("hola mundo\n");
-//    for(z=0; z<box->numTexturas;z++) printf("%d %f %f \n",
-//                                          z,
-//                                          box->texturas[z]->x,
-//                                          box->texturas[z]->y
-//    );
-
-//    box->texturas[box->faces2[z]->texturas[1]]->x,
-//            box->texturas[box->faces2[z]->texturas[1]]->y
-
-//    box->texturas[box->faces2[z]->texturas[0]]->x,
-//            box->texturas[box->faces2[z]->texturas[0]]->y
     obj_free(box);
     shader_free(gouraud);
     glDeleteTextures(1,&texture);
