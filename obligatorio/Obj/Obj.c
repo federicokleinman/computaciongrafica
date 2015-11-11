@@ -16,6 +16,34 @@ float * texturas;
 void creteArrayVertices(Obj * obj);
 void creteArrayNormales(Obj * obj);
 void creteArrayTexturas(Obj * obj);
+char **strsplit(const char* str, const char* delim, size_t* numtokens);
+
+char **strsplit(const char* str, const char* delim, size_t* numtokens) {
+    char *s = strdup(str);
+    size_t tokens_alloc = 1;
+    size_t tokens_used = 0;
+    char **tokens = calloc(tokens_alloc, sizeof(char*));
+    char *token, *rest = s;
+
+    while ((token = strsep(&rest, delim)) != NULL) {
+        if (tokens_used == tokens_alloc) {
+            tokens_alloc *= 2;
+            tokens = realloc(tokens, tokens_alloc * sizeof(char*));
+        }
+        tokens[tokens_used++] = strdup(token);
+    }
+
+    if (tokens_used == 0) {
+        free(tokens);
+        tokens = NULL;
+    } else {
+        tokens = realloc(tokens, tokens_used * sizeof(char*));
+    }
+    *numtokens = tokens_used;
+    free(s);
+    return tokens;
+}
+
 
 void obj_CountObjects()
 {
@@ -142,36 +170,28 @@ void LoadFaces2(int theobject)
             i = 0;
             while ((tok = strtok(NULL," ")) != NULL)
             {
-//                strcpy(temp,tok);
-//                temp[strcspn(temp,"/")] = 0;
-//                vert[i] = (int)strtol(temp,NULL,10);
-//
-//                strcpy(temp,tok);
-//                temp[strcspn(temp,"/")] = 0;
-//                norm[i] = (int)strtol(temp,NULL,10);
-//
-//                strcpy(temp,tok);
-//                temp[strcspn(temp,"/")] = 0;
-//                text[i] = (int)strtol(temp,NULL,10);
-                strcpy(temp,tok);
-                tok2 = strtok(temp,"/");
-//                printf(tok2);
-                text[i] = (int)strtol(tok2,NULL,10);
-                tok2 = strtok(NULL,"/");
-//                printf(tok2);
-                norm[i] = (int)strtol(tok2,NULL,10);
-                tok2 = strtok(NULL,"/");
-//                printf(tok2);
-                vert[i] = (int)strtol(tok2,NULL,10);
+                char **tokens;
+                size_t numtokens;
+                tokens = strsplit(tok, "/", &numtokens);
+
+//                printf("%s ", tokens[0]);
+//                printf("%s ", tokens[1]);
+//                printf("%s \n", tokens[2]);
+
+                if(i==0) {
+                    newface = (FACE2 *) malloc(sizeof(FACE2));
+                    gameobject[theobject + (numobjects - objectsInFile)]->faces2[facecount] = newface;
+                }
+                gameobject[theobject + (numobjects - objectsInFile)]->faces2[facecount]->vertices[i] = (int)strtol(tokens[0],NULL,10);
+                gameobject[theobject + (numobjects - objectsInFile)]->faces2[facecount]->normales[i] = (int)strtol(tokens[1],NULL,10);
+                gameobject[theobject + (numobjects - objectsInFile)]->faces2[facecount]->texturas[i] = (int)strtol(tokens[2],NULL,10);
+
+                free(tokens[0]);
+                free(tokens[1]);
+                free(tokens[2]);
+                free(tokens);
 
                 i++;
-            }
-            newface = (FACE2 *)malloc(sizeof(FACE2));
-            gameobject[theobject + (numobjects - objectsInFile)]->faces2[facecount] = newface;
-            for(i=0;i<3;i++) {
-                gameobject[theobject + (numobjects - objectsInFile)]->faces2[facecount]->vertices[i] = vert[i];
-                gameobject[theobject + (numobjects - objectsInFile)]->faces2[facecount]->normales[i] = norm[i];
-                gameobject[theobject + (numobjects - objectsInFile)]->faces2[facecount]->texturas[i] = text[i];
             }
             facecount++;
         }
