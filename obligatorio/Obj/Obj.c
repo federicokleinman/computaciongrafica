@@ -297,21 +297,21 @@ Obj* obj_load(char *filename)
 {
     // open and read obj file
     int i;
-    Obj *newobject;
+    Obj *obj;
 
     if((stream = fopen( filename, "r+t" )) != NULL )
     {
         obj_CountObjects();
         for (i=numobjects - objectsInFile; i<numobjects; i++)
         {
-            newobject = (Obj *)malloc(sizeof(Obj));
-            newobject->numfaces=0;
-            newobject->numfaces2=0;
-            newobject->numNormales=0;
-            newobject->numverts=0;
-            newobject->numTexturas=0;
+            obj = (Obj *)malloc(sizeof(Obj));
+            obj->numfaces=0;
+            obj->numfaces2=0;
+            obj->numNormales=0;
+            obj->numverts=0;
+            obj->numTexturas=0;
 
-            gameobject[i] = newobject;
+            gameobject[i] = obj;
             LoadVertices(i - (numobjects - objectsInFile));
             LoadNormales(i - (numobjects - objectsInFile));
             LoadTexturas(i - (numobjects - objectsInFile));
@@ -322,7 +322,7 @@ Obj* obj_load(char *filename)
         }
         fclose( stream );
     }
-    return newobject;
+    return obj;
 }
 
 void obj_render(Obj * obj)
@@ -403,10 +403,6 @@ void creteArrayTexturas(Obj * obj)
     texturas = (float *) malloc(sizeof(float) * texturasArraySize);
 
     for (i = 0; i < obj->numfaces2; ++i) {
-        printf("( %d %d %d )",obj->faces2[i]->texturas[0], obj->faces2[i]->texturas[1], obj->faces2[i]->texturas[2]);
-    }
-
-    for (i = 0; i < obj->numfaces2; ++i) {
         if(i<528) {
             texturas[(6 * i) + 0] = obj->texturas[obj->faces2[i]->texturas[0] - 1]->x;
             texturas[(6 * i) + 1] = obj->texturas[obj->faces2[i]->texturas[0] - 1]->y;
@@ -433,8 +429,7 @@ void obj_render2(Obj * obj)
     glTexCoordPointer(2, GL_FLOAT, 0, texturas);
 
     // draw
-//    glDrawArrays(GL_TRIANGLES, 0, 1902);
-    glDrawArrays(GL_TRIANGLES, 0, 2000);
+    glDrawArrays(GL_TRIANGLES, 0, obj->numfaces2 * 3);
 
     // deactivate vertex arrays after drawing
     glDisableClientState(GL_VERTEX_ARRAY);
