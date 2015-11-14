@@ -1,6 +1,6 @@
 #include "../framework/canvas.h"
 #include "../framework/mm.h"
-#include "../Obj/Obj.h"
+#include "Obj.h"
 #include "shader.h"
 #include <GL/gl.h>
 #include <SDL/SDL_image.h>
