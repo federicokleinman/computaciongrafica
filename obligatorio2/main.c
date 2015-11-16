@@ -27,7 +27,7 @@ typedef struct {
 #define EPSILON 0.01f
 #define INF 100000.0f
 
-#define SIZE 300
+#define SIZE 500
 
 // Crear una ventana de 600x600 pixels:
 int cw = SIZE;
@@ -185,12 +185,10 @@ int main(int argc, char* argv[])
 	// Crear una ventana de 500x500 pixels:
 //	int cw = 500;
 //	int ch = 500;
+//    printf("cw  %d\n",cw);
+//    printf("ch  %d\n",ch);
 	cg_init(cw, ch, NULL);
-	
-#ifdef WIN32
-    freopen( "CON", "w", stdout );
-	freopen( "CON", "w", stderr );
-#endif
+
 
 	bool b = true;
 	b = 1 && 0;
@@ -199,7 +197,7 @@ int main(int argc, char* argv[])
 		printf("bool ok!!! %f\n",r);
 	// Dibujar un pequeno "+" en el centro de la ventana:
 //	Color color = cg_color_new(0xff, 0x0, 0x0);
-	//int x, y;
+//	int x, y;
 //	for (int x = -1; x <= 1; x++)
 //	{
 //		for (int y = -1; y <= 1; y++)
@@ -210,7 +208,9 @@ int main(int argc, char* argv[])
 //			}
 //		}
 //	}
-	cg_parse_conf("Escenas_Raytracer/escena1.txt");
+
+    cg_parse_conf("Escenas_Raytracer/escena1.txt");
+
 	// Actualizar la pantalla:
 	cg_repaint();
 
@@ -230,21 +230,32 @@ int main(int argc, char* argv[])
 		}
 
 		cg_clear();
-
         putpixelLoop();
 
         cg_repaint();
 	}
 
-	// Liberar recursos:
+    // Liberar recursos:
+    while (escena.pLight != NULL) {
+        CG_Light* next = escena.pLight->next;
+        cg_free(escena.pLight);
+        escena.pLight = next;
+    }
+
+    while (escena.pSphere != NULL) {
+        CG_Sphere* next = escena.pSphere->next;
+        cg_free(escena.pSphere);
+        escena.pSphere = next;
+    }
+
+    // Liberar recursos:
 	cg_close();
 
 	// Ejemplo del modulo de Manejo de Memoria (MM):
-	int* pint = (int *)cg_malloc(10*sizeof(int));
-	printf("pint is a pointer: %p\n", pint);
-	cg_free(pint); // olvidarse de liberar este objeto produce un mensaje
+//	int* pint = (int *)cg_malloc(10*sizeof(int));
+//	printf("pint is a pointer: %p\n", pint);
+//	cg_free(pint); // olvidarse de liberar este objeto produce un mensaje
 
-	
 	return 0;
 }
 

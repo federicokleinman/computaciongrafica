@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Vec3.h"
+#include <math.h>
 
 void vec3Init(Vec3* v, float x, float y, float z)
 {

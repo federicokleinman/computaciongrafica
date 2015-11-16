@@ -9,7 +9,7 @@ LIB_DIRS=`sdl-config --libs`
 
 # agregue aqui, separado con espacios, cada archivo .c que produzca.
 # renombre la extension .c a .o (ejemplo.c -> ejemplo.o):
-OBJECTS = framework/color.o framework/mm.o framework/canvas.o cg_parser.o main.o Vec3.o cg_parser.o
+OBJECTS = framework/color.o framework/mm.o framework/canvas.o cg_parser.o main.o Vec3.o
 
 # nombre a asignar al .exe producido:
 EXE = cg
@@ -18,8 +18,9 @@ EXE = cg
 
 CC = gcc
 
+# problemas con sqrt: http://forums.fedoraforum.org/showthread.php?t=249414
 CFLAGS = -Wall -std=c99 -ggdb -O0
-LD_FLAGS =
+LD_FLAGS = -lm
 #LD_FLAGS = -lSDLmain -lSDL
 
 #CPPCHECK = cppcheck --enable=all --error-exitcode=255 -f
