@@ -23,7 +23,7 @@ typedef struct CG_Material {
 } CG_Material;
 
 typedef struct CG_Sphere {
-    Vec3 pos;
+    Vec3 pos; //centro
     float radius;
     CG_Material material;
     struct CG_Sphere* next;

@@ -1,18 +1,18 @@
 # ====================================================================
-#  Escenario de prueba - Obligatorio Computaciï¿½n Grï¿½fica 2005
+#  Escenario de prueba - Obligatorio Computación Gráfica 2005
 # ====================================================================
 #
-# Las lï¿½neas que comienzan con # son comentarios y deben ser ignoradas
+# Las líneas que comienzan con # son comentarios y deben ser ignoradas
 #
-#  Cï¿½mara
+#  Cámara
 # --------
-# Posiciï¿½n
+# Posición
 pos  0  0.5  0
 
-# Distancia al plano de proyecciï¿½n
+# Distancia al plano de proyección
 dist  1.00
 
-# Tamaï¿½o del viewport
+# Tamaño del viewport
 viewport 2.0 2.0
 
 #  Luces
@@ -33,8 +33,8 @@ lightP  0.35 -5  5  5.00
 # rad = radio
 # dr, dg, db = color difuso
 # sr, sg, sb = color especular
-# exp = exponente especular (-1 si no tiene reflexiï¿½n especular)
-# ref = fracciï¿½n de reflexiï¿½n
+# exp = exponente especular (-1 si no tiene reflexión especular)
+# ref = fracción de reflexión
 #
 # sphere <cx>  <cy>  <cz> <rad>  <dr>  <dg>  <db>  <sr>  <sg>  <sb> <exp> <ref>
 #

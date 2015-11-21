@@ -7,6 +7,8 @@
 enum bool {false, true};
 typedef enum bool bool;
 
+// todo no normalizar cuando sombras
+
 typedef struct {
     Vec3 origin; // punto en el espacio
     Vec3 dir; // normalizada
@@ -25,7 +27,7 @@ typedef struct {
 
 #define clamp(value,min,max) ((value <= min) ? min : ((value >= max) ? max : value))
 #define EPSILON 0.01f
-#define INF 100000.0f
+#define INF 100000000.0f
 
 #define SIZE 500
 
@@ -70,12 +72,16 @@ InterSphere rayo_esfera(const Ray* ray, const CG_Sphere* e) {
             return res;
         }
 
-        float thc = sqrt(e->radius * e->radius - d2);
+        float thc = sqrtf(e->radius * e->radius - d2);  // sqrt
         res.t0 = tca - thc;
         res.t1 = tca + thc;
 
         res.points = (res.t0 == res.t1) ? 1 : 2;
     }
+	else {
+		res.t0 = INF;
+		res.t1 = INF;
+	}
 
     return res;
 }
@@ -89,12 +95,12 @@ Inter intersectar_rayo(const Ray* ray, float min, float max) {
         InterSphere inter = rayo_esfera(ray, pEsfera);
 
         if (inter.points > 0) {
-            if (min <= inter.t0 && inter.t0 <= res.lambda) {
+            if (min < inter.t0  &&  max > inter.t0 && inter.t0 < res.lambda) {
                 res.lambda = inter.t0;
                 res.e = pEsfera;
             }
 
-            if (min <= inter.t1 && inter.t1 <= res.lambda) {
+            if (min < inter.t1 &&  max > inter.t1 &&  inter.t1 < res.lambda) {
                 res.lambda = inter.t1;
                 res.e = pEsfera;
             }
@@ -104,7 +110,7 @@ Inter intersectar_rayo(const Ray* ray, float min, float max) {
     return res;
 }
 
-Color trazar_rayo(const Ray* rayoVista, float min, float max, int max_rec) {
+Color trazar_rayo(const Ray* rayoVista, float min, float max, int max_rec, bool refraccion) {
 	Color res;
 	res.r = 0;
 	res.g = 0;
@@ -136,7 +142,7 @@ Color trazar_rayo(const Ray* rayoVista, float min, float max, int max_rec) {
 				res = add_color(res, diffuseColor);
 
 				// Especular
-				if (inter.e->material.coef_espec > 0) {
+				if ( (!refraccion) && max_rec > 0 && inter.e->material.coef_espec > 0) {
 					Vec3 R = Vec3_diff(vec3_mult(N, 2.0f * vec3_dot(&N, &lRay.dir)), lRay.dir);
 					vec3_normalize(&R);
 					float spec = pLight->intens * pow(vec3_dot(&V, &R), inter.e->material.coef_espec);
@@ -147,11 +153,14 @@ Color trazar_rayo(const Ray* rayoVista, float min, float max, int max_rec) {
 		}
 
 		// Reflejos
-		if (max_rec > 0) {
+		if (max_rec > 0 && inter.e->material.coef_refl > 0) {
+			vec3_normalize(&N);
+			vec3_normalize(&V);
+
 			Vec3 R = Vec3_diff(vec3_mult(N, 2.0f * vec3_dot(&N, &V)), V);
-			lRay.dir = Vec3_diff(R, lRay.origin);
+			lRay.dir = R ; // Vec3_diff(R, lRay.origin);
 			vec3_normalize(&lRay.dir);
-			Color cr = trazar_rayo(&lRay, EPSILON, INF, max_rec - 1);
+			Color cr = trazar_rayo(&lRay, EPSILON, INF, max_rec - 1, false);
 			res = add_color(mult_color(1.0f - inter.e->material.coef_refl, res), mult_color(inter.e->material.coef_refl, cr));
 		}
 	}
@@ -159,9 +168,12 @@ Color trazar_rayo(const Ray* rayoVista, float min, float max, int max_rec) {
 	return res;
 }
 
-
+// todo con sombras no se normaliza
 void putpixelLoop() {
 	Ray ray;
+	printf("%f",escena.cam.x );
+	printf("%f",escena.cam.y );
+	printf("%f",escena.cam.z );
 	ray.origin = escena.cam;
 
 	Vec3 V;
@@ -171,10 +183,10 @@ void putpixelLoop() {
 			V.x = x * escena.vw / cw;
 			V.y = y * escena.vh / ch;
 
-			ray.dir = Vec3_diff(V, ray.origin);
+			ray.dir = V ; //Vec3_diff(V, ray.origin);
 			float distance = vec3_norm(&ray.dir);
 			vec3_normalize(&ray.dir);
-			Color c = trazar_rayo(&ray, distance, INF, 3);
+			Color c = trazar_rayo(&ray, distance, INF, 4, false);
 			cg_putpixel(x, y, c);
 		}
 	}
@@ -187,31 +199,40 @@ int main(int argc, char* argv[])
 //	int ch = 500;
 //    printf("cw  %d\n",cw);
 //    printf("ch  %d\n",ch);
+
+//
+//	bool b = true;
+//	b = 1 && 0;
+//	float r = rand() / (float)RAND_MAX;
+//	if(!b)
+//		printf("bool ok!!! %f\n",r);
+//	// Dibujar un pequeno "+" en el centro de la ventana:
+////	Color color = cg_color_new(0xff, 0x0, 0x0);
+////	int x, y;
+////	for (int x = -1; x <= 1; x++)
+////	{
+////		for (int y = -1; y <= 1; y++)
+////		{
+////			if (x == 0 || y == 0)
+////			{
+////				cg_putpixel(x, y, color);
+////		}
+////	}
+
 	cg_init(cw, ch, NULL);
-
-
-	bool b = true;
-	b = 1 && 0;
-	float r = rand() / (float)RAND_MAX;
-	if(!b)
-		printf("bool ok!!! %f\n",r);
-	// Dibujar un pequeno "+" en el centro de la ventana:
-//	Color color = cg_color_new(0xff, 0x0, 0x0);
-//	int x, y;
-//	for (int x = -1; x <= 1; x++)
-//	{
-//		for (int y = -1; y <= 1; y++)
-//		{
-//			if (x == 0 || y == 0)
-//			{
-//				cg_putpixel(x, y, color);
-//			}
-//		}
+//	SDL_Surface *screen ;
+//
+//	if (SDL_Init(SDL_INIT_VIDEO)<0) {
+//		exit(1);
 //	}
+//	atexit(SDL_Quit);
+//	screen = SDL_SetVideoMode(510,510,0,SDL_SWSURFACE);
 
-    cg_parse_conf("Escenas_Raytracer/escena1.txt");
-
+//    cg_parse_conf("Escenas_Raytracer/escena1.txt");
+    cg_parse_conf("Escenas_Raytracer/escena2.txt");
 	// Actualizar la pantalla:
+	cg_clear();
+	putpixelLoop();
 	cg_repaint();
 
 	int done = 0;
@@ -229,11 +250,12 @@ int main(int argc, char* argv[])
 			}
 		}
 
-		cg_clear();
-        putpixelLoop();
-
-        cg_repaint();
+//		cg_clear();
+//        putpixelLoop();
+//
+//        cg_repaint();
 	}
+
 
     // Liberar recursos:
     while (escena.pLight != NULL) {

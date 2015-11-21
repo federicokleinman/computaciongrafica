@@ -28,7 +28,7 @@ void cg_parse_conf(char* scene_file){
                 escena.cam.y = cam_pos_y;
                 escena.cam.z = cam_pos_z;
                 /******************************************************/
-                printf("POS: [%f %f %f]\n",cam_pos_x,cam_pos_y,cam_pos_z);
+//                printf("POS: [%f %f %f]\n",cam_pos_x,cam_pos_y,cam_pos_z);
             }
             else
             {
@@ -40,7 +40,7 @@ void cg_parse_conf(char* scene_file){
                     /*Insertar código para almacenar distancia del viewport*/
                     escena.dist = d;
                     /*******************************************************/
-                    printf("DIST: %f\n",d);
+//                    printf("DIST: %f\n",d);
                 }
                 else
                 {
@@ -55,7 +55,7 @@ void cg_parse_conf(char* scene_file){
                         escena.vh = vh;
                         escena.vw = vw;
                         /*********************************************************/
-                        printf("VIEWPORT: [%f %f]\n",vw,vh);
+//                        printf("VIEWPORT: [%f %f]\n",vw,vh);
                     }
                     else
                     {
@@ -67,7 +67,7 @@ void cg_parse_conf(char* scene_file){
                             /*Insertar código para almacenar intensidad ambiente  */
                             escena.intAmbient = ambient;
                             /******************************************************/
-                            printf("I_AMB: %f\n",ambient);
+//                            printf("I_AMB: %f\n",ambient);
                         }
                         else
                         {
@@ -85,7 +85,7 @@ void cg_parse_conf(char* scene_file){
                                 escena.cam_view.y = cam_view_y;
                                 escena.cam_view.z = cam_view_z;
                                 /**********************************************************************/
-                                printf("VIEW: [%f %f %f]\n",cam_view_x,cam_view_y,cam_view_z);
+//                                printf("VIEW: [%f %f %f]\n",cam_view_x,cam_view_y,cam_view_z);
                             }
                             else
                             {
@@ -103,7 +103,7 @@ void cg_parse_conf(char* scene_file){
                                     escena.cam_up.y = cam_up_y;
                                     escena.cam_up.z = cam_up_z;
                                     /**********************************************************************/
-                                    printf("UP: [%f %f %f]\n",cam_up_x,cam_up_y,cam_up_z);
+//                                    printf("UP: [%f %f %f]\n",cam_up_x,cam_up_y,cam_up_z);
                                 }
                                 else
                                 {
@@ -130,7 +130,7 @@ void cg_parse_conf(char* scene_file){
                                         pLight->next = escena.pLight;
                                         escena.pLight = pLight;
                                         /******************************************************/
-                                        printf("LIGHT_P: %f [%f %f %f]\n",l_int,l_pos_x,l_pos_y,l_pos_z);
+//                                        printf("LIGHT_P: %f [%f %f %f]\n",l_int,l_pos_x,l_pos_y,l_pos_z);
                                     }
                                     else
                                     {
@@ -157,7 +157,7 @@ void cg_parse_conf(char* scene_file){
                                             pLight->next = escena.pLight;
                                             escena.pLight = pLight;
                                             /******************************************************/
-                                            printf("LIGHT_D: %f [%f %f %f]\n",l_int,l_dir_x,l_dir_y,l_dir_z);
+//                                            printf("LIGHT_D: %f [%f %f %f]\n",l_int,l_dir_x,l_dir_y,l_dir_z);
                                         }
                                         else
                                         {
@@ -213,7 +213,7 @@ void cg_parse_conf(char* scene_file){
                                                 pSphere->next = escena.pSphere;
                                                 escena.pSphere = pSphere;
                                                 /******************************************************/
-                                                printf("SPHERE: CENTER [%f %f %f] RADIUS %f C_DIF [%d %d %d] C_SPEC [%d %d %d] CF_SPEC %f CF_REFL %f\n",center_x,center_y,center_z,radius,col_dif_r,col_dif_g,col_dif_b,col_spec_r,col_spec_g,col_spec_b,coef_spec,coef_refl);
+//                                                printf("SPHERE: CENTER [%f %f %f] RADIUS %f C_DIF [%d %d %d] C_SPEC [%d %d %d] CF_SPEC %f CF_REFL %f\n",center_x,center_y,center_z,radius,col_dif_r,col_dif_g,col_dif_b,col_spec_r,col_spec_g,col_spec_b,coef_spec,coef_refl);
 
                                             }
                                         }

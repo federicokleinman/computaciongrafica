@@ -49,7 +49,7 @@ Vec3 vec3InitHomotecia(int a, int b)
 }
 
 float vec3_norm(const Vec3* v) {
-    return sqrt(v->x * v->x + v->y * v->y + v->z * v->z);
+    return sqrtf(v->x * v->x + v->y * v->y + v->z * v->z); //sqrt
 }
 
 Vec3 Vec3_diff(Vec3 a, Vec3 b) {

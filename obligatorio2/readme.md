@@ -1,6 +1,22 @@
 ### Computación Gráfica
 Segundo Trabajo Obligatorio
 
+# Ejecución
+
+Correr el script run.sh
+
+
+# Resultados
+
+**Ejemplo1**
+
+![alt text](https://github.com/nandotorterolo/computaciongrafica/blob/master/obligatorio2/Ejemplo1.png "Ejemplo1")
+
+**Ejemplo2**
+
+![alt text](https://github.com/nandotorterolo/computaciongrafica/blob/master/obligatorio2/Ejemplo2.png "Ejemplo2")
+
+
 1. Problemas obligatorios
 
 El problema a resolver consiste en dibujar una escena simple, compuesta únicamente por
