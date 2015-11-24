@@ -58,13 +58,13 @@ int main(int argc, char* argv[])
     GLint uniform_especular = shader_get_unif_loc(gouraud, "especular");
     GLint uniform_tex = shader_get_unif_loc(gouraud, "tex");
 
-//    Obj* objPtr = obj_load("../Models/knight_texturas.obj");
-    Obj* objPtr = obj_load("../Models/box_texturas.obj");
+    Obj* objPtr = obj_load("../Models/knight_texturas.obj");
+//    Obj* objPtr = obj_load("../Models/box_texturas.obj");
 
     //Cargo la imagen de disco usando SDL_image
-//    SDL_Surface* surface = IMG_Load("../Models/knight.png");
+    SDL_Surface* surface = IMG_Load("../Models/knight.png");
 //    SDL_Surface* surface = IMG_Load("../Models/knight_good.png");
-    SDL_Surface* surface = IMG_Load("../Models/box.jpg");
+//    SDL_Surface* surface = IMG_Load("../Models/box.jpg");
     if (surface==NULL) { //Si falla la carga de la imagen, despliego el mensaje de error correspondiente y termino el programa.
         printf("Error: \"%s\"\n", SDL_GetError());
         return 1;
@@ -169,8 +169,9 @@ int main(int argc, char* argv[])
 
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
-//        glTranslatef(0.0f, 0.0f, -50.0f);
-        glTranslatef(0.0f, 0.0f, -2.0f);
+        // this traslate should be change with Knoght or Cube
+        glTranslatef(0.0f, 0.0f, -50.0f);
+//        glTranslatef(0.0f, 0.0f, -2.0f);
         glRotatef(pitch, 1.0f, 0.0f, 0.0f);
         glRotatef(ang, 0.0f, 1.0f, 0.0f);
 
