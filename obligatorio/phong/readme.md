@@ -33,4 +33,6 @@ Sombreado por medio de Phong Shading u otra técnica, utilizando shaders glsl. (
 
 ![alt text](https://github.com/nandotorterolo/computaciongrafica/blob/master/obligatorio/phong/phong2.png "Con shader phong")
 
+**Ejemplo3**
 
+![alt text](https://github.com/nandotorterolo/computaciongrafica/blob/master/obligatorio/phong/phong3.png "Con shader phong")
