@@ -7,8 +7,6 @@
 enum bool {false, true};
 typedef enum bool bool;
 
-// todo no normalizar cuando sombras
-
 typedef struct {
     Vec3 origin; // punto en el espacio
     Vec3 dir; // normalizada
@@ -168,7 +166,6 @@ Color trazar_rayo(const Ray* rayoVista, float min, float max, int max_rec, bool 
 	return res;
 }
 
-// todo con sombras no se normaliza
 void putpixelLoop() {
 	Ray ray;
 	printf("%f",escena.cam.x );
@@ -183,7 +180,7 @@ void putpixelLoop() {
 			V.x = x * escena.vw / cw;
 			V.y = y * escena.vh / ch;
 
-			ray.dir = V ; //Vec3_diff(V, ray.origin);
+			ray.dir = V ;
 			float distance = vec3_norm(&ray.dir);
 			vec3_normalize(&ray.dir);
 			Color c = trazar_rayo(&ray, distance, INF, 4, false);
@@ -194,42 +191,12 @@ void putpixelLoop() {
 
 int main(int argc, char* argv[])
 {
-	// Crear una ventana de 500x500 pixels:
-//	int cw = 500;
-//	int ch = 500;
-//    printf("cw  %d\n",cw);
-//    printf("ch  %d\n",ch);
-
-//
-//	bool b = true;
-//	b = 1 && 0;
-//	float r = rand() / (float)RAND_MAX;
-//	if(!b)
-//		printf("bool ok!!! %f\n",r);
-//	// Dibujar un pequeno "+" en el centro de la ventana:
-////	Color color = cg_color_new(0xff, 0x0, 0x0);
-////	int x, y;
-////	for (int x = -1; x <= 1; x++)
-////	{
-////		for (int y = -1; y <= 1; y++)
-////		{
-////			if (x == 0 || y == 0)
-////			{
-////				cg_putpixel(x, y, color);
-////		}
-////	}
 
 	cg_init(cw, ch, NULL);
-//	SDL_Surface *screen ;
-//
-//	if (SDL_Init(SDL_INIT_VIDEO)<0) {
-//		exit(1);
-//	}
-//	atexit(SDL_Quit);
-//	screen = SDL_SetVideoMode(510,510,0,SDL_SWSURFACE);
 
-//    cg_parse_conf("Escenas_Raytracer/escena1.txt");
-    cg_parse_conf("Escenas_Raytracer/escena2.txt");
+	char * fileName = argv[1];
+	cg_parse_conf(fileName);
+
 	// Actualizar la pantalla:
 	cg_clear();
 	putpixelLoop();
@@ -249,11 +216,6 @@ int main(int argc, char* argv[])
 				case SDL_QUIT : done = 1;
 			}
 		}
-
-//		cg_clear();
-//        putpixelLoop();
-//
-//        cg_repaint();
 	}
 
 

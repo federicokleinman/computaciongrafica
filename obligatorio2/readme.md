@@ -3,7 +3,9 @@ Segundo Trabajo Obligatorio
 
 # Ejecución
 
-Correr el script run.sh
+script run.sh para el ejemplo1
+
+script run2.sh para el ejemplo2
 
 
 # Resultados

@@ -48,4 +48,4 @@ clean:
 	@rm -f $(OBJECTS) $(EXE)
 
 run: all
-	./$(EXE) Escenas_Raytracer/escena1.txt
+	./$(EXE) Escenas_Raytracer/escena2.txt
