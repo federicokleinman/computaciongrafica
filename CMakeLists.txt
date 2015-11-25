@@ -15,6 +15,8 @@ set(SOURCE_FILES
     practico_0/Matrix4x4.h
     obligatorio/Obj/Obj.c
     obligatorio/Obj/Obj.h
+    obligatorio2/Vec3.c
+    obligatorio2/Vec3.h
     testSuite/CuTest.c
     testSuite/CuTest.h
     testSuite/StrUtil.c
