@@ -1,18 +1,21 @@
 ### Computación Gráfica
 
-# Parte 5 Obligatorio
-
-Mapeo de texturas, con filtrado bilineal.
-
-# Ejecución
+# Parte Opcional Obligatorio
 
 Sombreado por medio de Phong Shading u otra técnica, utilizando shaders glsl. (+20 pts).
 
+# Ejecución
+
+script run.sh para el ejemplo1
+
+script run2.sh para el ejemplo2
+
+script run3.sh para el ejemplo3
 
 | Tecla | Descripcion                          |
 |-------|--------------------------------------|
 | S     | Activa Specular                      |
-| P     | Activa Shadow                        |
+| P     | Activa Shaders Phong                 |
 | G     | Activa Gourand Shading FLAT/SMOOTH   |
 | M     | Activa imagen Solida / Malla Alambre |
 | Z     | Activa / Desactiva GL_DEPTH_TEST     |

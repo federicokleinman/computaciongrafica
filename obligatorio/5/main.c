@@ -58,13 +58,33 @@ int main(int argc, char* argv[])
     GLint uniform_especular = shader_get_unif_loc(gouraud, "especular");
     GLint uniform_tex = shader_get_unif_loc(gouraud, "tex");
 
+    Obj* objPtr ;
+    int example = atoi(argv[1]);
+
+    if (example==1 || example==3)
+        objPtr = obj_load("../Models/knight_texturas.obj");
+    else if (example==2)
+        objPtr = obj_load("../Models/box_texturas.obj");
+
+    //Cargo la imagen de disco usando SDL_image
+    SDL_Surface* surface; // = IMG_Load("../Models/knight.png");
+
+    if (example==1 )
+        surface = IMG_Load("../Models/knight.png");
+    else if (example==2)
+        surface = IMG_Load("../Models/box.jpg");
+    else if (example==3)
+        surface = IMG_Load("../Models/knight_good.png");
+
+
 //    Obj* objPtr = obj_load("../Models/knight_texturas.obj");
-    Obj* objPtr = obj_load("../Models/box_texturas.obj");
+//    Obj* objPtr = obj_load("../Models/box_texturas.obj");
 
     //Cargo la imagen de disco usando SDL_image
 //    SDL_Surface* surface = IMG_Load("../Models/knight.png");
 //    SDL_Surface* surface = IMG_Load("../Models/knight_good.png");
-    SDL_Surface* surface = IMG_Load("../Models/box.jpg");
+//    SDL_Surface* surface = IMG_Load("../Models/box.jpg");
+
     if (surface==NULL) { //Si falla la carga de la imagen, despliego el mensaje de error correspondiente y termino el programa.
         printf("Error: \"%s\"\n", SDL_GetError());
         return 1;
@@ -169,8 +189,15 @@ int main(int argc, char* argv[])
 
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
+
+        if (example==1 || example==3)
+            glTranslatef(0.0f, 0.0f, -50.0f);
+        else if (example==2)
+            glTranslatef(0.0f, 0.0f, -2.0f);
+
 //        glTranslatef(0.0f, 0.0f, -50.0f);
-        glTranslatef(0.0f, 0.0f, -2.0f);
+//        glTranslatef(0.0f, 0.0f, -2.0f);
+
         glRotatef(pitch, 1.0f, 0.0f, 0.0f);
         glRotatef(ang, 0.0f, 1.0f, 0.0f);
 
