@@ -2,7 +2,7 @@
 
 if [ `uname` == "Linux" ]
 then
-	make -f Makefile3.linux run
+	make -f Makefile.linux run
 else
-	make -f Makefile3.mac run
+	make -f Makefile.mac run
 fi
