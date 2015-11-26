@@ -1,3 +1,8 @@
 #!/bin/bash
 
-make -f Makefile.linux run
+if [ `uname` == "Linux" ]
+then
+	make -f Makefile.linux run
+else
+	make -f Makefile.mac run
+fi

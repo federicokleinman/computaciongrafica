@@ -1,4 +1,10 @@
 #!/bin/bash
 
-make -f Makefile.linux clean
+if [ `uname` == "Linux" ]
+then
+	make -f Makefile.linux clean
+else
+	make -f Makefile.mac clean
+fi
+
 
