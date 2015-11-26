@@ -1,6 +1,11 @@
 ### Computación Gráfica
 Segundo Trabajo Obligatorio
 
+Universidad Católica del Uruguay
+Segundo Semestre - Año 2015
+Profesor: Sergio Azcurrain, Jose Aguerre
+Integrantes: Fernando Torterolo, Gianni Iaquinta.
+
 # Ejecución
 
 script run.sh para el ejemplo1
@@ -62,15 +67,16 @@ Mac: https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManP
 3 http://webasignatura.ucu.edu.uy/pluginfile.php?file=%2F15542%2Fmod_folder%2Fcontent%2F0%2FReferencia
 %2FPaper-Subdivision-Uniforme.pdf&forcedownload=1
 3.
-Entrega
+
+### Entrega
 La entrega consistirá en el envío del código fuente de un programa C mediante
 WebAsignatura el día Domingo 22 de Noviembre de 2015. Su entrega deberá incluir todos
 los archivos necesarios para compilar la aplicación.
 Su aplicación deberá ser “autocontenida”, y deberá restringirse de intentar a acceder a
 archivos de configuración, modelos, imágenes, etc. en rutas predefinidas como “C:\”,
 “C:\Documents and Settings" u otros. Todas las rutas utilizadas por su aplicación deberán
-ser relativas y estar formadas por el carácter “/” (no “\”). Esta acotación incluye tanto las
-rutas a los recursos mencionados, como las instrucciones #include en los archivos fuente y
+ser relativas y estar formadas por el carácter “/” (no “\”).
+Esta acotación incluye tanto las rutas a los recursos mencionados, como las instrucciones #include en los archivos fuente y
 la declaración de los fuentes a compilar en el archivo Makefile.
 Los trabajos son en grupos de hasta 2 personas y deberán ser de su propia autoría (Trabajos
 Originales). Es suficiente con que uno de los integrantes del grupo suba la entrega.
@@ -80,8 +86,8 @@ compilar y ejecutar estas aplicaciones, además de un archivo README especifican
 integrantes del grupo, las características extras que fueron implementadas, las teclas
 configuradas para interactuar con su aplicación, librerías externas que haya utilizado y
 cualquier otra información que considere relevante para poder evaluar su trabajo.
-4.
-Calificación
+
+## Calificación
 Los trabajos se calificarán según los siguientes criterios: El conjunto de Características
 Obligatorias tiene un valor de 30% de la nota total del curso.
 Se penalizará hasta con un 15% de la nota a los trabajos que aborten por errores o por falta

@@ -2,7 +2,11 @@
 
 Universidad Católica del Uruguay
 Segundo Semestre - Año 2015
-Profesor: Sergio Azcurrain
+Profesor: Sergio Azcurrain, Jose Aguerre
+
+Integrantes: Fernando Torterolo, Gianni Iaquinta.
+
+
 
 ## Problemas obligatorios
 
